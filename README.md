@@ -6,11 +6,10 @@ This repository contains the end-to-end solution for the Rearc Data Quest coding
 
 #Folder Structure
 
-.
-├── data/                  # Local copies of dataset files from S3 (used in Part 3)
-├── lambda_functions/      # Contains source code for Lambda functions (Part 1 and 2)
-├── part_3_ipynb/          # Jupyter notebook with Part 3 analytics using PySpark
-├── terraform/             # Terraform code to set up SQS, S3 event notifications, and Lambda trigger
+data/                  # Local copies of dataset files from S3 (used in Part 3)
+lambda_functions/      # Contains source code for Lambda functions (Part 1 and 2)
+part_3_ipynb/          # Jupyter notebook with Part 3 analytics using PySpark
+/main.tf             # Terraform code to set up SQS, S3 event notifications, and Lambda trigger
 
 
 ---
@@ -45,7 +44,7 @@ This repository contains the end-to-end solution for the Rearc Data Quest coding
 
 ---
 
-## ⚙️ Infrastructure as Code (`terraform/`)
+## ⚙️ Infrastructure as Code (`/`)
 
 The Terraform configuration includes:
 
@@ -54,18 +53,6 @@ The Terraform configuration includes:
 - A **Lambda function** triggered by the SQS queue that logs the analysis steps (from the notebook)
 - Also includes a zipped Lambda function file `part_4_log_results.zip`, which logs the simulated query results based on the Part 3 notebook logic
 
-This is designed for production-friendly automation of the Part 3 pipeline, including CloudWatch logs.
 
 ---
 
-## How to Deploy
-
-1. `cd terraform/`
-2. Run `terraform init`
-3. Run `terraform apply`
-4. Upload a JSON file to `s3://my-bls-data-sync/datausa/`
-5. Lambda gets triggered and logs the analytics steps to CloudWatch
-
----
-
-For any questions or suggestions, feel free to raise an issue or reach out!
